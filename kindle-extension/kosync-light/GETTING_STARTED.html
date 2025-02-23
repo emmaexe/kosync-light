@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting started</title>
+</head>
+<body>
+    <h1>KOSync Light</h1>
+    <p>A lightweight implementation of the <a href="https://github.com/koreader/koreader-sync-server/">Koreader Sync Server</a> in Rust. KOSync Light stores data as files in a configurable directory and exposes the sync server API. It is meant to be run on the ebook reader itself paired with <a href="https://github.com/syncthing/syncthing">Syncthing</a> or similar software which would synchronize the data directory across devices.</p>
+    <h4>Setup and defaults</h4>
+    <p>By default, the server will run on <code>http://127.0.0.1:8778</code> and store data under <code>/mnt/us/kosync-data</code>.</p>
+    <p>Make sure you are using <u><b>HTTP</b></u> and not <u><b>HTTPS</b></u> when entering the IP in KOReader.</p>
+    <p>
+        To change the port or data directory, you need to edit the <code>menu.json</code> file and modify the <code>action</code> property under <code>items</code>:
+        <br>
+        &emsp;<code>/mnt/us/extensions/kosync-light/bin/kosync-light --address 127.0.0.1:8778 --data /mnt/us/kosync-data</code>
+        <br>
+        <code>--adddress</code> determines the address that the server will be hosted on and <code>--data</code> the directory where the data will be stored.
+        <br>
+        To use kosync-light on other devices, setup Syncthing to synchronize the data directory and point kosync-light on the other device to the same directory.
+    </p>
+    <h4>Modes</h4>
+    <p>There are 2 modes, normal and noauth.</p>
+    <p>
+        In normal mode kosync-light acts exactly any other koreader sync server would.
+        <br>
+        In noauth mode, kosync-light will ignore usernames and passwords. Registration will no longer work.
+        <br>
+        On login, all username and password combinations will succeed and will point to the same user on the server.
+        <br>
+        You can use this if you don't wanna bother with usernames or passwords and only intend to run kosync-light on your own devices.
+    </p>
+    <p>
+        Data for normal and noauth mode is kept seperate.
+        <br>
+        If you want to swap between the two you need to copy the data from (relative to the data folder) your user under <code>.../users/$USERNAME/devices/</code> to the noauth user under <code>.../noauth/devices/</code>.
+        <br>
+        If you want to swap in the opposite direction, first make sure to start the server in normal mode, register to setup the password and then copy the data.
+    </p>
+    <h4>KUAL Menu Options</h4>
+    <ul>
+        <li><b>Start kosync-light</b> starts kosync-light in regular mode.</li>
+        <li><b>Start kosync-light (noauth)</b> starts kosync-light in noauth mode.</li>
+        <li><b>Restart kosync-light</b> kills any running kosync-light instances and starts kosync-light in regular mode.</li>
+        <li><b>Restart kosync-light (noauth)</b> kills any running kosync-light instances and starts kosync-light in noauth mode.</li>
+        <li><b>Stop kosync-light</b> kills any running kosync-light instances.</li>
+        <li><b>README</b> opens this document.</li>
+    </ul>
+</body>
+</html>

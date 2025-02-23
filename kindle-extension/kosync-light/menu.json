@@ -1,0 +1,16 @@
+{
+    "items": [
+        {
+            "name": "KOSync Light",
+            "priority": 0,
+            "items": [
+                {"name": "Start kosync-light", "priority": 1, "action": "/mnt/us/extensions/kosync-light/bin/kosync-light --address 127.0.0.1:8778 --data /mnt/us/kosync-data &>/mnt/us/kosync-light.log"},
+                {"name": "Start kosync-light (noauth)", "priority": 2, "action": "/mnt/us/extensions/kosync-light/bin/kosync-light --noauth --address 127.0.0.1:8778 --data /mnt/us/kosync-data &>/mnt/us/kosync-light.log"},
+                {"name": "Restart kosync-light", "priority": 3, "action": "killall kosync-light; /mnt/us/extensions/kosync-light/bin/kosync-light --address 127.0.0.1:8778 --data /mnt/us/kosync-data &>/mnt/us/kosync-light.log"},
+                {"name": "Restart kosync-light (noauth)", "priority": 4, "action": "killall kosync-light; /mnt/us/extensions/kosync-light/bin/kosync-light --noauth --address 127.0.0.1:8778 --data /mnt/us/kosync-data &>/mnt/us/kosync-light.log"},
+                {"name": "Stop kosync-light", "priority": 5, "action": "killall kosync-light"},
+                {"name": "README", "priority": 6, "action": "/mnt/us/koreader/koreader.sh --kual /mnt/us/extensions/kosync-light/GETTING_STARTED.html"}
+            ]
+		}
+	]
+}
